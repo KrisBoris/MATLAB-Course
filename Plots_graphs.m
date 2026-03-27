@@ -18,6 +18,21 @@ xlim([0, 0.5]), ylim([0, 5])
 clc, clearvars, close all, format compact
 
 % vector definition
-x = linspace(-10, 0, 10);
+x = linspace(-10, 10, 1000);
 y = (x-2).^2 - 5;
 figure(2), plot(x, y, '.g'), hold on
+title("Wave displacement vs. time"), xlabel("Time [s]"), ylabel("Displacement [m]")
+grid on
+
+% determine minimal value
+[min_y_value, min_y_index] = min(y)
+min_x = x(min_y_index)
+
+% plot minimal value
+plot(min_x, min_y_value, 'mo', 'MarkerFaceColor', 'm', 'MarkerSize', 10)
+hold off
+
+% print out the minimal value
+min_y_value
+disp(min_y_value)
+fprintf("Minimal value of y = %0.2f, for x = %0.2f\n", min_y_value, min_x)
