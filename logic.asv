@@ -1,0 +1,11 @@
+% Trigonometry functions
+clc, clearvars, close all
+
+x = linspace(0, 10, 100000);
+y = sin(x);
+y_check = 0.8;
+
+plot(x, y, 'g'), hold on, plot([0 10], [y_check y_check], 'r')
+
+y_greater = y > y_check;
+final_percentage = sum(y_greater) / length(y)
