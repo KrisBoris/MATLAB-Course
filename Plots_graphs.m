@@ -1,0 +1,23 @@
+% Plots and graphs
+%% Section 1
+clc, clearvars, close all, format compact
+
+% Plot wave y = A*cos(w*t)
+freq = 2;
+amp = 5;
+t = linspace(0, 1, 200);
+
+y = amp*cos(2*pi*freq.*t);
+
+figure(1), plot(t, y, '-sg'), grid on, xlabel("iksy"), ylabel("igreki")
+title("Galaktyka Kurwix została zaatakowana przez złych kosmitów")
+legend("Never dies")
+xlim([0, 0.5]), ylim([0, 5])
+
+%% Section 2
+clc, clearvars, close all, format compact
+
+% vector definition
+x = linspace(-10, 0, 10);
+y = (x-2).^2 - 5;
+figure(2), plot(x, y, '.g'), hold on
