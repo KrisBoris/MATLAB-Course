@@ -3,7 +3,7 @@ clc, clearvars, close all, format compact
 
 % Input parameters
 tri_base = 10;  % equilateral triangle's base
-n = 100;
+n = 100000;
 init_point = [5, 3];
 
 % Starting calcs
@@ -21,16 +21,25 @@ for i = 1:n
     % calculate midpoints
     switch event
         case 1
-            calc_midpoint(current_pos, pt1);
+            current_pos = calc_midpoint(current_pos, pt1);
         case 2
-            calc_midpoint(current_pos, pt2);
+            current_pos = calc_midpoint(current_pos, pt2);
         case 3
-            calc_midpoint(current_pos, pt3);
+            current_pos = calc_midpoint(current_pos, pt3);
     end
+
+    % save the values
+    all_pos(i, 1) = current_pos(1);
+    all_pos(i, 2) = current_pos(2);
 
 end
 
+plot(all_pos(:,1), all_pos(:,2), '.g')
+hold on
+plot([pt1(1), pt2(1), pt3(1)], [pt1(2), pt2(2), pt3(2)], 'mv', ...
+    'MarkerFaceColor', 'm', 'MarkerSize', 14)
+
 function [mid_point] = calc_midpoint(current_pos, target_pos) 
-    mid_point(1) = (current_pos(1) + current_pos(2)) / 2;
-    mid_point(2) = (target_pos(1) + target_pos(2)) / 2;
+    mid_point(1) = (current_pos(1) + target_pos(1)) / 2;
+    mid_point(2) = (current_pos(2) + target_pos(2)) / 2;
 end
